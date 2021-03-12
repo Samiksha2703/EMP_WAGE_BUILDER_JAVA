@@ -4,10 +4,21 @@ public class EmployeeWageBuilder {
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
 
-	//Method to calculate employee wage
-	public static void calculateEmpWage(String company, int empRatePerHour, int numOfWorkingDays,
-			int maxHoursPerMonth) {
+	private final String company;
+ 	private final int empRatePerHour;
+        private final int numOfWorkingDays;
+        private final int maxHoursPerMonth;
 
+	// Constructor
+	public EmployeeWageBuilder(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth){
+	this.company = company;
+	this.empRatePerHour = empRatePerHour;
+	this.numOfWorkingDays = numOfWorkingDays;
+	this.maxHoursPerMonth = maxHoursPerMonth;
+	}
+
+	//Method to calculate employee wage
+	public void calculateEmpWage() {
 		// Variables
 		int empHrs = 0;
 		int totalEmpHrs = 0;
@@ -37,7 +48,9 @@ public class EmployeeWageBuilder {
 	}
 
 	public static void main(String args[]) {
-		calculateEmpWage("D-mart", 20, 20, 100);
-		calculateEmpWage("Tech-Mahendra", 15, 18, 85);
+		EmployeeWageBuilder dMart = new EmployeeWageBuilder("D-mart", 20, 20, 100);
+		EmployeeWageBuilder reliance = new EmployeeWageBuilder("Tech-Mahendra", 15, 18, 85);
+		dMart.calculateEmpWage();
+		reliance.calculateEmpWage();
 	}
 }
